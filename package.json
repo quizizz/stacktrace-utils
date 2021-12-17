@@ -1,7 +1,7 @@
 {
   "name": "stacktrace-utils",
   "version": "0.1.0",
-  "description": "Captures stack trace in the form of parsed objects..",
+  "description": "Captures stack trace in the form of parsed objects.",
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
@@ -9,9 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/quizizz/stacktrace-utils.git"
   },
   "keywords": [
+    "parser",
     "stack-trace",
     "v8",
     "nodejs"
