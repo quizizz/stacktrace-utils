@@ -11,7 +11,7 @@ function _defaultCallSiteParser(callSite) {
     };
 }
 
-function _classifyInternalCallSites(parsedCallSites) {
+function _identifyInternalCallSites(parsedCallSites) {
     const internalModules = StackUtils.nodeInternals();
     let updatedCallSites = [];
     parsedCallSites.forEach(callSite => {
@@ -51,7 +51,7 @@ function captureAndParseStackTrace({
     const parsedCallSites = stackUtils.capture(limit, startStackFunction);
 
     if (callSiteParser === _defaultCallSiteParser) {
-        return { frames: _classifyInternalCallSites(parsedCallSites) };
+        return { frames: _identifyInternalCallSites(parsedCallSites) };
     }
 
     return { frames: parsedCallSites };
