@@ -12,4 +12,4 @@ interface CaptureAndParseStackReturnValue {
     frames: any[];
 }
 
-export type captureAndParseStackTrace = ({limit, startStackFunction, callSiteParser}: CaptureAndParseStackNamedParameters) => CaptureAndParseStackReturnValue;
+export function captureAndParseStackTrace(args: CaptureAndParseStackNamedParameters): CaptureAndParseStackReturnValue;
