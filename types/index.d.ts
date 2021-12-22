@@ -8,8 +8,16 @@ interface CaptureAndParseStackNamedParameters {
     callSiteParser?: CallSiteParserFunction;
 }
 
-interface CaptureAndParseStackReturnValue {
-    frames: any[];
+interface DefaultFramesType {
+    function_name: string;
+    file_name: string;
+    line_number: number;
+    column_number: number;
+    in_app: boolean;
+}
+
+export interface CaptureAndParseStackReturnValue {
+    frames: DefaultFramesType[] | any[];
 }
 
 export function captureAndParseStackTrace(args: CaptureAndParseStackNamedParameters): CaptureAndParseStackReturnValue;
