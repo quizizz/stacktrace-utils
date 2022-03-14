@@ -15,7 +15,10 @@ function _identifyInternalCallSites(parsedCallSites) {
     const internalModules = StackUtils.nodeInternals();
     let updatedCallSites = [];
     parsedCallSites.forEach(callSite => {
-        const fileName = callSite.file_name.replace(/\\/g, '/');
+        let fileName = 'unknown';
+        if (callSite.file_name) {
+            fileName = callSite.file_name.replace(/\\/g, '/');
+        }
         if (internalModules.some(internal => {
             let stackLine = fileName + ':' + callSite.line_number + ':' + callSite.column_number;
             if (internal.toString().startsWith('/\\(') && internal.toString().endsWith('\\)$/')) {
