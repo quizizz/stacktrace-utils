@@ -8,6 +8,12 @@ interface CaptureAndParseStackNamedParameters {
     callSiteParser?: CallSiteParserFunction;
 }
 
+interface ParseStackTraceParameters {
+    callSiteParser?: CallSiteParserFunction;
+    cwd?: string;
+    currentTrace: string;
+}
+
 interface DefaultFramesType {
     function_name: string;
     file_name: string;
@@ -21,3 +27,4 @@ export interface CaptureAndParseStackReturnValue {
 }
 
 export function captureAndParseStackTrace(args: CaptureAndParseStackNamedParameters): CaptureAndParseStackReturnValue;
+export function parseStackTrace(args: ParseStackTraceParameters): CaptureAndParseStackReturnValue;
