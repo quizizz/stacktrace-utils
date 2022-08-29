@@ -14,7 +14,7 @@ function _defaultCallSiteParser(callSite) {
 
 function _defaultStringTraceParser(callSite) {
     const functionName = callSite.function;
-    const possibleFunctionName = functionName != null ? functionName : (methodName != null ? methodName : '<unknown>');
+    const possibleFunctionName = functionName != null ? functionName : '<unknown>';
 
     return {
         function_name: possibleFunctionName,
@@ -86,19 +86,18 @@ function parseStackTrace({
     cwd = null,
     currentTrace
 } = {}) {
-    const opts = {
-        wrapCallSite: callSiteParser
-    };
+    const opts = {};
 
     if (cwd) {
         opts.cwd = cwd;
     }
 
-    const stack = new StackUtils({ wrapCallSite: callSiteParser, cwd });
+    const stack = new StackUtils(opts);
     const parsedSites = currentTrace.split('\n')
                         .map((trace) => trace.trim())
                         .map((trace) => stack.parseLine(trace))
-                        .filter(Boolean);
+                        .filter(Boolean)
+                        .map((trace) => callSiteParser(trace));
 
     if (callSiteParser === _defaultStringTraceParser) {
         return {
