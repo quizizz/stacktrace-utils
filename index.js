@@ -98,7 +98,7 @@ function parseStackTrace({
     const parsedSites = currentTrace.split('\n')
                         .map((trace) => trace.trim())
                         .map((trace) => stack.parseLine(trace))
-                        .map(Boolean);
+                        .filter(Boolean);
 
     if (callSiteParser === _defaultStringTraceParser) {
         return {
