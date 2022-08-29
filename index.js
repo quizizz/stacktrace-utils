@@ -87,7 +87,7 @@ function parseStackTrace({
     currentTrace
 } = {}) {
     const opts = {
-        wrapCallSite
+        wrapCallSite: callSiteParser
     };
 
     if (cwd) {
